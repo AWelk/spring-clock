@@ -45,11 +45,13 @@ public class ProgressBar extends SubPanel {
         float blockBottom = centerY+(blockRadius/2);
         float blockLeft = left;
         blocks = new ArrayList<>(numEnds);
+        int end = 1;
         while(blockLeft < right) {
-            EndBlock block = new EndBlock(parent, blockLeft, blockTop, blockLeft+blockRadius, blockBottom);
+            EndBlock block = new EndBlock(end, parent, blockLeft, blockTop, blockLeft + blockRadius, blockBottom);
             block.setup();
             blocks.add(block);
             blockLeft+=blockRadius;
+            end++;
         }
     }
 

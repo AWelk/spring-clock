@@ -6,13 +6,16 @@ import processing.core.PConstants;
 
 public class EndBlock extends SubPanel {
 
-    public EndBlock(PApplet parent, float x1, float y1, float x2, float y2) {
+    private final String end;
+
+    public EndBlock(int end, PApplet parent, float x1, float y1, float x2, float y2) {
         super(parent, x1, y1, x2, y2);
+        this.end = String.valueOf(end);
     }
 
     @Override
     public void setup() {
-        
+        fitText(end, x1, y1, x2, y2);
     }
 
     void draw(float percentFilled) {
@@ -25,5 +28,9 @@ public class EndBlock extends SubPanel {
         parent.noFill();
         parent.stroke(255);
         parent.rect(x1+width/10, y1+height/10, x2-width/10, y2-height/10);
+
+        parent.fill(255, 0, 0);
+        parent.textAlign(PConstants.CENTER, PConstants.BOTTOM);
+        text(end, centerX, bottom);
     }
 }

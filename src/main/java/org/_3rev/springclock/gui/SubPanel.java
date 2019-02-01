@@ -1,6 +1,7 @@
 package org._3rev.springclock.gui;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 
 public abstract class SubPanel {
 
@@ -21,6 +22,8 @@ public abstract class SubPanel {
     protected final float left;
     protected final float right;
 
+    private PFont font;
+    private float textSize;
 
     public SubPanel(PApplet parent) {
         this(parent, 0, 0, parent.width, parent.height);
@@ -43,6 +46,28 @@ public abstract class SubPanel {
         this.bottom = y2;
         this.left = x1;
         this.right = x2;
+    }
+
+    protected void fitText(String message, float x1, float y1, float x2, float y2) {
+        font = parent.createFont("Consolas-Bold-250", 250);
+        parent.textFont(font);
+
+        float textTestSize = 1;
+        parent.textSize(textTestSize);
+        while (parent.textWidth(message) < width
+                && parent.textAscent() + parent.textDescent() < height) {
+            textTestSize++;
+            parent.textSize(textTestSize);
+        }
+
+        font = parent.createFont("Consolas-Bold-250", textTestSize - 1);
+        textSize = textTestSize - 1;
+    }
+
+    protected void text(String message, float x, float y) {
+        parent.textFont(font);
+        parent.textSize(textSize);
+        parent.text(message, x, y);
     }
 
     public abstract void setup();

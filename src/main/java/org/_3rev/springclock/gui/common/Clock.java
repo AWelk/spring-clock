@@ -16,6 +16,7 @@ public class Clock extends SubPanel {
     @Override
     public void setup() {
         parent.textAlign(PApplet.CENTER, PApplet.BOTTOM);
+        fitText("00:11:22", x1, y1, x2, y2);
     }
 
     public void draw() {
@@ -28,9 +29,13 @@ public class Clock extends SubPanel {
         int minutes = totalMinutes % 60;
         int hours = totalMinutes / 60;
 
+        String time = PApplet.nf(hours, 2) + ":" + PApplet.nf(minutes, 2) + ":" + PApplet.nf(seconds, 2);
+
         parent.textAlign(PApplet.CENTER, PApplet.BOTTOM);
         parent.fill(255, 0, 0);
-        parent.text(PApplet.nf(hours, 2) + ":" + PApplet.nf(minutes, 2) + ":" + PApplet.nf(seconds, 2), centerX, bottom);
+
+        text(time, centerX, bottom);
+//        fittedText(PApplet.nf(hours, 2) + ":" + PApplet.nf(minutes, 2) + ":" + PApplet.nf(seconds, 2), x1, y1, x2, y2);
     }
 
     private void writeTime() {
