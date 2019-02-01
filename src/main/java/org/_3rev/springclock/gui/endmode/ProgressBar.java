@@ -23,8 +23,19 @@ public class ProgressBar extends SubPanel {
     }
 
     public void draw(float percentComplete) {
-        for (EndBlock block : blocks) {
-            block.draw(percentComplete);
+        float filledBlocks = percentComplete * numEnds / 100;
+        int totalFullBlocks = (int) filledBlocks;
+        int lastBlockPercent = (int) ((filledBlocks - Math.floor(filledBlocks)) * 100);
+
+        for (int i = 0; i < numEnds; i++) {
+            EndBlock block = blocks.get(i);
+            if (i < totalFullBlocks) {
+                block.draw(100);
+            } else if (i == totalFullBlocks) {
+                block.draw(lastBlockPercent);
+            } else {
+                block.draw(0);
+            }
         }
     }
 

@@ -41,7 +41,6 @@ public class EndTimer extends SubPanel {
             clock.draw(totalSec);
             totalSec--;
             bar.draw(PApplet.map((duration-totalSec),0, duration, 0, 100));
-            System.out.println(PApplet.map((duration-totalSec),0, duration, 0, 100) + "%");
         }
     }
 
