@@ -64,6 +64,10 @@ public abstract class SubPanel {
         textSize = textTestSize - 1;
     }
 
+    protected void fitText(String message) {
+        this.fitText(message, x1, y1, x2, y2);
+    }
+
     protected void text(String message, float x, float y) {
         parent.textFont(font);
         parent.textSize(textSize);

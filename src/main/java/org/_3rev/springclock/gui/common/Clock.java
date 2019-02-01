@@ -16,7 +16,7 @@ public class Clock extends SubPanel {
     @Override
     public void setup() {
         parent.textAlign(PApplet.CENTER, PApplet.BOTTOM);
-        fitText("00:11:22", x1, y1, x2, y2);
+        fitText("00:11:22");
     }
 
     public void draw() {

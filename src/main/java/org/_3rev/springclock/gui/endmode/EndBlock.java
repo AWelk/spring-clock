@@ -15,7 +15,7 @@ public class EndBlock extends SubPanel {
 
     @Override
     public void setup() {
-        fitText(end, x1, y1, x2, y2);
+        fitText(end);
     }
 
     void draw(float percentFilled) {
