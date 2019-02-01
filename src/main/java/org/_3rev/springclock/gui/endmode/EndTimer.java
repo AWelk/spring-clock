@@ -43,22 +43,6 @@ public class EndTimer extends SubPanel {
         }
     }
 
-//    private void fittedText(String message, float percentHeight) {
-//        parent.textFont(font);
-//        float size = PApplet.min(font.getSize() * parent.width / parent.textWidth(message), parent.height * percentHeight);
-//        font = parent.createFont("Consolas-Bold-250", size);
-//        parent.textSize(size);
-//        parent.textFont(font);
-//    }
-
-//    private void displayEndMessage() {
-//        fittedText("Curling!", 3);
-//        parent.textAlign(parent.CENTER, parent.BOTTOM);
-//        parent.text("Good", parent.width / 2f, parent.height / 2f);
-//        parent.textAlign(parent.CENTER, parent.TOP);
-//        parent.text("Curling!", parent.width / 2f, parent.height / 2f);
-//    }
-
     public void start(int totalSec) {
         this.totalSec = totalSec;
         this.duration = totalSec;

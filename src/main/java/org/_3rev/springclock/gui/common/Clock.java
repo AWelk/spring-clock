@@ -35,7 +35,6 @@ public class Clock extends SubPanel {
         parent.fill(255, 0, 0);
 
         text(time, centerX, bottom);
-//        fittedText(PApplet.nf(hours, 2) + ":" + PApplet.nf(minutes, 2) + ":" + PApplet.nf(seconds, 2), x1, y1, x2, y2);
     }
 
     private void writeTime() {
