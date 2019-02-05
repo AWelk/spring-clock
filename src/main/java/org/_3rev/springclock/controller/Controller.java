@@ -11,7 +11,7 @@ public class Controller {
     }
 
     public void start() {
-        clock.start(100);
+//        clock.start(100);
     }
 
     public void stop() {

@@ -1,50 +1,43 @@
 package org._3rev.springclock.gui.endmode;
 
 import org._3rev.springclock.gui.SubPanel;
-import org._3rev.springclock.gui.common.Clock;
 import processing.core.PApplet;
 
 public class EndTimer extends SubPanel {
 
-    private static final String DEFAULT_TIME = "01:23:45";
+    private ContinuousMode continuousMode;
+    private FinalMode finalMode;
 
-    private int totalSec = 30;
-    private int duration = 30;
-    private Clock clock;
-    private ProgressBar bar;
-    private EndMessage endMessage;
+    private EndMode mode;
 
     public EndTimer(PApplet parent) {
         super(parent);
+        mode = EndMode.CONTINUOUS;
     }
 
     public void setup() {
-        fitText(DEFAULT_TIME);
+        continuousMode = new ContinuousMode(parent);
+        continuousMode.setup();
 
-        clock = new Clock(parent, left, top, right, centerY);
-        clock.setup();
-
-        bar = new ProgressBar(parent, left, centerY, right, bottom, 8);
-        bar.setup();
-
-        endMessage = new EndMessage(parent);
-        endMessage.setup();
+        finalMode = new FinalMode(parent);
+        finalMode.setup();
     }
 
     public void draw() {
         parent.background(0);
 
-        if (totalSec <= 0) {
-            endMessage.draw();
+        if (EndMode.CONTINUOUS == mode) {
+            continuousMode.draw();
         } else {
-            clock.draw(totalSec);
-            totalSec--;
-            bar.draw(PApplet.map((duration-totalSec),0, duration, 0, 100));
+            finalMode.draw();
         }
     }
 
-    public void start(int totalSec) {
-        this.totalSec = totalSec;
-        this.duration = totalSec;
+    public void continuousMode() {
+        this.mode = EndMode.CONTINUOUS;
+    }
+
+    public void finalMode() {
+        this.mode = EndMode.FINAL;
     }
 }

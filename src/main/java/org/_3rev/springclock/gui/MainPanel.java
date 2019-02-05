@@ -27,8 +27,4 @@ public class MainPanel extends PApplet {
         background(0);
         endTimer.draw();
     }
-
-    public void start(int totalSeconds) {
-        endTimer.start(totalSeconds);
-    }
 }
