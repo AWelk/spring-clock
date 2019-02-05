@@ -1,6 +1,7 @@
 package org._3rev.springclock.ws;
 
 import org._3rev.springclock.controller.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,13 +14,18 @@ public class Endpoint {
         this.controller = controller;
     }
 
-    @RequestMapping("/start")
-    public void start() {
-        controller.start();
+    @RequestMapping("/continuousEnd/{seconds}")
+    public void continuousEnd(@PathVariable int seconds) {
+        controller.continuousEnd(seconds);
     }
 
-    @RequestMapping("/stop")
-    public void stop() {
-        controller.stop();
+    @RequestMapping("/finalEnd/{seconds}")
+    public void finalEnd(@PathVariable int seconds) {
+        controller.finalEnd(seconds);
+    }
+
+    @RequestMapping("/clock")
+    public void clock() {
+        controller.clock();
     }
 }

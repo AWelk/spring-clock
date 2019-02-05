@@ -1,7 +1,8 @@
 package org._3rev.springclock.gui;
 
 import org._3rev.springclock.controller.Controller;
-import org._3rev.springclock.gui.endmode.EndTimer;
+import org._3rev.springclock.gui.clock.ClockPanel;
+import org._3rev.springclock.gui.endmode.EndTimerPanel;
 import org.springframework.stereotype.Component;
 import processing.core.PApplet;
 
@@ -9,7 +10,10 @@ import processing.core.PApplet;
 public class MainPanel extends PApplet {
 
     public static Controller controller = new Controller();
-    private EndTimer endTimer;
+    private EndTimerPanel endTimerPanel;
+    private ClockPanel clockPanel;
+
+    private MainPanelMode activeMode = MainPanelMode.CLOCK;
 
     public void settings() {
         size(800, 600);
@@ -19,12 +23,37 @@ public class MainPanel extends PApplet {
 
     public void setup() {
         frameRate(1);
-        endTimer = new EndTimer(this);
-        endTimer.setup();
+        endTimerPanel = new EndTimerPanel(this);
+        endTimerPanel.setup();
+
+        clockPanel = new ClockPanel(this);
+        clockPanel.setup();
     }
 
     public void draw() {
         background(0);
-        endTimer.draw();
+
+        switch (activeMode) {
+            case ENDTIMER:
+                endTimerPanel.draw();
+                break;
+            default:
+                clockPanel.draw();
+                break;
+        }
+    }
+
+    public void continuousEnd(int totalSeconds) {
+        activeMode = MainPanelMode.ENDTIMER;
+        endTimerPanel.continuousMode(totalSeconds);
+    }
+
+    public void finalEnd(int totalSeconds) {
+        activeMode = MainPanelMode.ENDTIMER;
+        endTimerPanel.finalMode(totalSeconds);
+    }
+
+    public void clock() {
+        activeMode = MainPanelMode.CLOCK;
     }
 }

@@ -10,11 +10,15 @@ public class Controller {
         this.clock = clock;
     }
 
-    public void start() {
-//        clock.start(100);
+    public void continuousEnd(int totalSeconds) {
+        clock.continuousEnd(totalSeconds);
     }
 
-    public void stop() {
-        clock.stop();
+    public void finalEnd(int totalSeconds) {
+        clock.finalEnd(totalSeconds);
+    }
+
+    public void clock() {
+        clock.clock();
     }
 }

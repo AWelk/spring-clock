@@ -39,6 +39,6 @@ public class CountdownClock extends SubPanel {
 
     private void writeTime() {
         parent.fill(255, 0, 0);
-        parent.text(PApplet.nf(PApplet.hour() % 12, 2) + ":" + PApplet.nf(PApplet.minute(), 2), centerX, bottom);
+        text(PApplet.nf(PApplet.hour() % 12, 2) + ":" + PApplet.nf(PApplet.minute(), 2), centerX, bottom);
     }
 }

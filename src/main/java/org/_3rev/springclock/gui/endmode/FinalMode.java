@@ -6,10 +6,10 @@ import processing.core.PApplet;
 
 import static org._3rev.springclock.gui.common.Constants.NUM_ENDS;
 
-public class FinalMode extends SubPanel {
+public class FinalMode extends SubPanel implements TimerMode {
 
-    private int totalSec = 10;
-    private int duration = 10;
+    private int totalSec;
+    private int duration;
     private CountdownClock countdownClock;
     private ProgressBar bar;
     private EndMessage endMessage;
@@ -42,5 +42,11 @@ public class FinalMode extends SubPanel {
             totalSec--;
             bar.draw(PApplet.map((duration - totalSec), 0, duration, 0, 100));
         }
+    }
+
+    @Override
+    public void setTime(int seconds) {
+        duration = seconds;
+        totalSec = duration;
     }
 }

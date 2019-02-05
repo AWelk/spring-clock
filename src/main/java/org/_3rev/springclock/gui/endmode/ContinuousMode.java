@@ -5,14 +5,14 @@ import processing.core.PApplet;
 
 import static org._3rev.springclock.gui.common.Constants.NUM_ENDS;
 
-public class ContinuousMode extends SubPanel {
+public class ContinuousMode extends SubPanel implements TimerMode {
 
     private ContinuousTimer continuousTimer;
     private ProgressBar bar;
 
-    private int progressBarSecond = 30;
-    private int timerSeconds = progressBarSecond * (NUM_ENDS - 1) / NUM_ENDS;
-    private int duration = 30;
+    private int progressBarSeconds;
+    private int timerSeconds;
+    private int duration;
 
     ContinuousMode(PApplet parent) {
         super(parent);
@@ -34,7 +34,14 @@ public class ContinuousMode extends SubPanel {
     public void draw() {
         continuousTimer.draw(timerSeconds);
         timerSeconds--;
-        bar.draw(PApplet.map((duration - progressBarSecond), 0, duration, 0, 100));
-        progressBarSecond--;
+        bar.draw(PApplet.map((duration - progressBarSeconds), 0, duration, 0, 100));
+        progressBarSeconds--;
+    }
+
+    @Override
+    public void setTime(int seconds) {
+        duration = seconds;
+        progressBarSeconds = duration;
+        timerSeconds = progressBarSeconds * (NUM_ENDS - 1) / NUM_ENDS;
     }
 }
