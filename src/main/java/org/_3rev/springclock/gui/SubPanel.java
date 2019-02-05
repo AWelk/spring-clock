@@ -60,8 +60,8 @@ public abstract class SubPanel {
             parent.textSize(textTestSize);
         }
 
-        font = parent.createFont("Consolas-Bold-250", textTestSize - 1);
-        textSize = textTestSize - 1;
+        textSize = textTestSize - textTestSize * 0.05f;
+        font = parent.createFont("Consolas-Bold-250", textSize);
     }
 
     protected void fitText(String message) {
