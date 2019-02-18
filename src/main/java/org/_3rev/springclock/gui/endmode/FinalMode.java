@@ -1,7 +1,9 @@
 package org._3rev.springclock.gui.endmode;
 
 import org._3rev.springclock.gui.SubPanel;
-import org._3rev.springclock.gui.common.CountdownClock;
+import org._3rev.springclock.gui.common.AbstractCountdown;
+import org._3rev.springclock.gui.common.BarTimer;
+import org._3rev.springclock.gui.common.EndMessage;
 import processing.core.PApplet;
 
 import static org._3rev.springclock.gui.common.Constants.NUM_ENDS;
@@ -10,7 +12,7 @@ public class FinalMode extends SubPanel implements TimerMode {
 
     private int totalSec;
     private int duration;
-    private CountdownClock countdownClock;
+    private AbstractCountdown countdownClock;
     private ProgressBar bar;
     private EndMessage endMessage;
 
@@ -24,7 +26,7 @@ public class FinalMode extends SubPanel implements TimerMode {
 
     @Override
     public void setup() {
-        countdownClock = new CountdownClock(parent, left, top, right, centerY);
+        countdownClock = new BarTimer(parent, left, top, right, centerY);
         countdownClock.setup();
 
         bar = new ProgressBar(parent, left, centerY, right, bottom, NUM_ENDS);

@@ -3,6 +3,7 @@ package org._3rev.springclock.gui;
 import org._3rev.springclock.controller.Controller;
 import org._3rev.springclock.gui.clock.ClockPanel;
 import org._3rev.springclock.gui.endmode.EndTimerPanel;
+import org._3rev.springclock.gui.timer.TimerPanel;
 import org.springframework.stereotype.Component;
 import processing.core.PApplet;
 
@@ -12,6 +13,7 @@ public class MainPanel extends PApplet {
     public static Controller controller = new Controller();
     private EndTimerPanel endTimerPanel;
     private ClockPanel clockPanel;
+    private TimerPanel timerPanel;
 
     private MainPanelMode activeMode = MainPanelMode.CLOCK;
 
@@ -28,6 +30,9 @@ public class MainPanel extends PApplet {
 
         clockPanel = new ClockPanel(this);
         clockPanel.setup();
+
+        timerPanel = new TimerPanel(this);
+        timerPanel.setup();
     }
 
     public void draw() {
@@ -36,6 +41,9 @@ public class MainPanel extends PApplet {
         switch (activeMode) {
             case ENDTIMER:
                 endTimerPanel.draw();
+                break;
+            case TIMER:
+                timerPanel.draw();
                 break;
             default:
                 clockPanel.draw();
@@ -55,5 +63,10 @@ public class MainPanel extends PApplet {
 
     public void clock() {
         activeMode = MainPanelMode.CLOCK;
+    }
+
+    public void timer(int totalSeconds) {
+        activeMode = MainPanelMode.TIMER;
+        timerPanel.setTime(totalSeconds);
     }
 }

@@ -15,7 +15,7 @@ public class ContinuousTimer extends SubPanel {
 
     @Override
     public void setup() {
-        parent.textAlign(PApplet.CENTER, PApplet.BOTTOM);
+        setTextAlign(PApplet.CENTER, PApplet.BOTTOM);
         fitText("+00:11:22");
     }
 
@@ -29,7 +29,6 @@ public class ContinuousTimer extends SubPanel {
 
         String time = direction + PApplet.nf(hours, 2) + ":" + PApplet.nf(minutes, 2) + ":" + PApplet.nf(seconds, 2);
 
-        parent.textAlign(PApplet.CENTER, PApplet.BOTTOM);
         parent.fill(255, 0, 0);
 
         text(time, centerX, bottom);

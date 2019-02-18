@@ -15,6 +15,7 @@ public class ClockPanel extends SubPanel {
     @Override
     public void setup() {
         fitText("99:99 PM");
+        setTextAlign(PApplet.CENTER, PApplet.CENTER);
     }
 
     public void draw() {
@@ -38,7 +39,6 @@ public class ClockPanel extends SubPanel {
             ampm = "am";
         }
 
-        parent.textAlign(PApplet.CENTER, PApplet.CENTER);
         text(PApplet.nf(h, 2) + ":" + PApplet.nf(m, 2) + " " + ampm, centerX, centerY);
     }
 }

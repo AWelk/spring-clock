@@ -24,6 +24,8 @@ public abstract class SubPanel {
 
     private PFont font;
     private float textSize;
+    protected int textAlignX = PApplet.CENTER;
+    protected int textAlignY = PApplet.CENTER;
 
     public SubPanel(PApplet parent) {
         this(parent, 0, 0, parent.width, parent.height);
@@ -71,8 +73,14 @@ public abstract class SubPanel {
     protected void text(String message, float x, float y) {
         parent.textFont(font);
         parent.textSize(textSize);
+        parent.textAlign(textAlignX, textAlignY);
         parent.text(message, x, y);
     }
 
     public abstract void setup();
+
+    public void setTextAlign(int textAlignX, int textAlignY) {
+        this.textAlignX = textAlignX;
+        this.textAlignY = textAlignY;
+    }
 }

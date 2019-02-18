@@ -24,6 +24,11 @@ public class Endpoint {
         controller.finalEnd(seconds);
     }
 
+    @RequestMapping("/timer/{seconds}")
+    public void timer(@PathVariable int seconds) {
+        controller.timer(seconds);
+    }
+
     @RequestMapping("/clock")
     public void clock() {
         controller.clock();

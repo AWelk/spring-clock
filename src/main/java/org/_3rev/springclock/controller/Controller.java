@@ -21,4 +21,8 @@ public class Controller {
     public void clock() {
         clock.clock();
     }
+
+    public void timer(int totalSeconds) {
+        clock.timer(totalSeconds);
+    }
 }
