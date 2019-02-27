@@ -42,6 +42,6 @@ public class ContinuousMode extends SubPanel implements TimerMode {
     public void setTime(int seconds) {
         duration = seconds;
         progressBarSeconds = duration;
-        timerSeconds = progressBarSeconds * (NUM_ENDS - 1) / NUM_ENDS;
+        timerSeconds = progressBarSeconds * (NUM_ENDS - 2) / NUM_ENDS;
     }
 }
