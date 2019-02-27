@@ -37,7 +37,7 @@ public class ContinuousTimer extends SubPanel {
     private enum Direction {
 
         POSITIVE("+"),
-        NEGATIVE("-");
+        NEGATIVE(" ");
 
         private final String symbol;
 
